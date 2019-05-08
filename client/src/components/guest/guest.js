@@ -60,7 +60,7 @@ export default class Guest extends Component {
 
             axios({
                 method: "POST",
-                url: "http://localhost:3008/api/inviteguest",
+                url: "http://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/inviteguest",
                 headers: headers,
                 data: {
                     "firstname": this.state.firstname,
