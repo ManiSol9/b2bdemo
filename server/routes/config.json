@@ -1,0 +1,37 @@
+[
+  {
+    "AssetName": "MotorAsset",
+    "ThresholdValues": [
+      {
+        "name": "current",
+        "min": 3,
+        "max": 10
+      },
+      {
+        "name": "rpm",
+        "min": 4,
+        "max": 3
+      },
+      {
+        "name": "temperature",
+        "min": 6,
+        "max": 5
+      },
+      {
+        "name": "vibration",
+        "min": 7,
+        "max": 8
+      }
+    ]
+  },
+  {
+    "AssetName": "LocatorAsset",
+    "ThresholdValues": [
+      {
+        "name": "distance",
+        "min": "20",
+        "max": "30"
+      }
+    ]
+  }
+]

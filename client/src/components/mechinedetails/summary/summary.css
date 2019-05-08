@@ -1,0 +1,40 @@
+.col-md-4.child-block-1 {
+    height: -webkit-fill-available;
+    /* background: yellow; */
+    /* text-align: center; */
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+}
+.col-md-8.child-block-2 {
+    height: -webkit-fill-available;
+}
+
+.rmc-drawer-open.rmc-drawer.rmc-drawer-right .rmc-drawer-sidebar {
+    width: 460px;
+    background: black;
+}
+
+.rmc-drawer-overlay {
+    opacity: 0;
+    visibility: hidden !important;
+}
+
+.main {
+    width: 60%;
+    margin-top: 80px;
+  }
+  span.icon-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #b6b6b6;
+}
+
+span.icon-data {
+    font-size: 16px;
+    font-weight: bold;
+}
+.main div {
+    padding: 5px;
+}
+

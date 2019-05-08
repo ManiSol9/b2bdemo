@@ -1,0 +1,34 @@
+.body1.col-md-12 {
+    padding: 10px;
+}
+.header-container {
+    height: 80px;
+    background: yellow;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+input.ant-input {
+    margin-bottom: 20px;
+}
+.col-md-12.datatable {
+    padding: 35px;
+}
+.serachuser {
+    width: 40%;
+    padding: 10px;
+}
+
+.invitebutton .button {
+    height: 43px;
+    font-size: 16px;
+    /* background: blue; */
+    color: #fff !important;
+    background-color: #096dd9 !important;
+    border-color: #096dd9;
+}
+.invitebutton {
+    padding: 10px;
+    text-align: right;
+    /* margin-top: 10px; */
+}

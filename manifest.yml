@@ -1,0 +1,9 @@
+applications:
+- name: dell-edgex-demo
+  memory: 956M
+  disk_quota: 956M
+  instance: 1 
+  buildpack: nodejs_buildpack
+  health-check-type: process
+  routes:
+  - route: dell-edgex-demo.apps.eu1.mindsphere.io
