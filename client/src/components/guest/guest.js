@@ -77,6 +77,14 @@ export default class Guest extends Component {
 
                         alert("Invitation sent Successfully")
 
+                        this.setState({
+                            firstname: '',
+                            lastname: '',
+                            email: '',
+                            phone: '',
+                            nickname: ''
+                        })
+
                     }
 
                 })

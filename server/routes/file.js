@@ -76,4 +76,47 @@ router.post("/api/inviteguest", (req, res) => {
 });
 
 
+
+router.get("/api/gettoken", (req, res) => {
+
+  let access_token = null
+
+  var options = {
+    method: 'POST',
+    url: 'https://login.microsoftonline.com/cd99fef8-1cd3-4a2a-9bdf-15531181d65e/oauth2/token',
+    headers:
+      {
+        'content-type': 'application/x-www-form-urlencoded',
+        accept: 'application/json'
+      },
+    form:
+      {
+        grant_type: 'client_credentials',
+        client_id: 'de21588f-0dc0-4133-8530-22443ca5eadd',
+        client_secret: 'x/S9opfi9zLKMKsey0ZHEAUqdm9H9REVAUTJOYwZMwA=',
+        resource: 'https://graph.microsoft.com'
+      }
+  };
+
+  request(options, function (error, response, body) { // this call will fetch the access token
+    if (error) {
+
+      res.status(401).json({
+        message: error
+      })
+
+    } else {
+
+      data = JSON.parse(body)
+
+      res.status(200).json({
+        ouptut: data
+      })
+
+    }
+
+  });
+
+});
+
 module.exports = router;

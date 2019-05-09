@@ -8,13 +8,6 @@ import "antd/dist/antd.css";
 
 const Search = Input.Search;
 
-const headers = {
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYcFlrem5DRTZ2Um9wMmRJekxLTFdlcy00elV4OXZTTGgwYW1HQzNLX3RaV1hLNHVRUXkwMWxLd1F4WndtcEh2ck9lckQ0WGFXSGw5bmJQV0szV1gtTnlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3Mjk3Nzg4LCJuYmYiOjE1NTcyOTc3ODgsImV4cCI6MTU1NzMwMTY4OCwiYWlvIjoiNDJaZ1lKZ2U5MjZEbi9hZDlYeFg3cy9hTzJPRkZ3QT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiOWZlb09VMkE3ay11cXVETklCSVVBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.yMl3PLIQCrYvbkvZ6VCyGl960aP2A9o497yVgxVrNxNFoRlfW6viPKYV2lNUlZDU0MSVZfwvv1IBLlQCkY1BLGSZXUR6YmDGjfB5V-_DBdBtACkiOg7TmyFn3h2X9cx5Hx8cPBGqq-tPQ4U_BWsoM0_fwYK5xxc1egl9tj4ppTDqZnqzbDxMRLPgYKS8JYKlbFkepgEa8EgRLw-wyIAYtTfd7xbf3Z4mCi0btXmc4U0yVR2YjfGyzR_dyVqo6R0s5ZEEyouLJ1DBPro-A3p9lRwL28h3zecHqcyvIuTHiGta_6ZmaPsqOMaJ-ETh87zWsuZQNpverarcCtJUy-ACFQ",
-    "Content-Type": "application/json"
-}
-
-
-
 export default class Main extends Component {
     constructor() {
         super();
@@ -29,7 +22,8 @@ export default class Main extends Component {
             search: '',
             inviteModel: 0,
             inviteDisplayName: '',
-            inviteUserEmail: ''
+            inviteUserEmail: '',
+            access_token: null
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -38,9 +32,36 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        this.fetchDetails()
+        this.fetchAccessToken()
     }
 
+
+    fetchAccessToken = () => {
+
+
+        axios({
+            method: "get",
+            url: "http://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/getToken",
+            headers:{
+                'content-type': 'application/x-www-form-urlencoded',
+                "accept": 'application/json',
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET",
+                "Access-Control-Allow-Credentials": true
+            }
+        })
+            .then(response => {
+                console.log(response)
+                this.setState({
+                    access_token: response.data.data.access_token
+                }, ()=> {
+                    this.fetchDetails()
+                })
+            })
+            .catch(err => {
+
+            });
+    }
 
 
     showModal = (user, val) => {
@@ -82,7 +103,10 @@ export default class Main extends Component {
         axios({
             method: "get",
             url: "https://graph.microsoft.com/v1.0/users",
-            headers: headers
+            headers:{
+                "Authorization": "Bearer "+ this.state.access_token,
+                "Content-Type": "application/json"
+            }
         })
             .then(response => {
                 console.log(response)
@@ -96,6 +120,13 @@ export default class Main extends Component {
             })
             .catch(err => {
                 console.log(err);
+                if(err.response.status == 401){
+
+
+
+                } else {
+                    alert("Something went Problem!, Please try again later")
+                }
             });
     };
 
@@ -137,7 +168,10 @@ export default class Main extends Component {
         axios({
             method: "get",
             url: "https://graph.microsoft.com/v1.0/users" + queryParam,
-            headers: headers
+            headers: {
+                "Authorization": "Bearer "+ this.state.access_token,
+                "Content-Type": "application/json"
+            }
         })
             .then(response => {
                 console.log(response)
@@ -167,7 +201,10 @@ export default class Main extends Component {
         axios({
             method: "PATCH",
             url: "https://graph.microsoft.com/v1.0/users/"+ this.state.id,
-            headers: headers,
+            headers: {
+                "Authorization": "Bearer "+ this.state.access_token,
+                "Content-Type": "application/json"
+            },
             data: {
                 "accountEnabled": true,
                 "givenName": this.state.lastname,
@@ -199,7 +236,10 @@ export default class Main extends Component {
             axios({
                 method: "POST",
                 url: "https://graph.microsoft.com/v1.0/invitations",
-                headers: headers,
+                headers: {
+                    "Authorization": "Bearer "+ this.state.access_token,
+                    "Content-Type": "application/json"
+                },
                 data: {
                     "invitedUserDisplayName": this.state.inviteDisplayName,
                     "invitedUserEmailAddress": this.state.inviteUserEmail,
@@ -219,7 +259,13 @@ export default class Main extends Component {
 
                 })
                 .catch(err => {
-                    alert("Something went Problom!")
+
+                    if(err.status == 401){
+                        alert("Hii")
+                    } else {
+                        alert("Not Hi")
+                    }
+
                     console.log(err);
                 });
     
