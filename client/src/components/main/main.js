@@ -32,8 +32,8 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        //this.fetchAccessToken()
-        this.fetchDetails()
+        this.fetchAccessToken()
+        //this.fetchDetails()
     }
 
 
@@ -258,13 +258,6 @@ export default class Main extends Component {
 
                 })
                 .catch(err => {
-
-                    if(err.status == 401){
-                        alert("Hii")
-                    } else {
-                        alert("Not Hi")
-                    }
-
                     console.log(err);
                 });
     

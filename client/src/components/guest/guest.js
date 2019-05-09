@@ -72,7 +72,7 @@ export default class Guest extends Component {
                 .then(response => {
                     console.log(response)
 
-                    if(response.status === 201){
+                    if(response.status === 200){
 
                         alert("Invitation sent Successfully")
 
@@ -94,8 +94,6 @@ export default class Guest extends Component {
     
 
         }
-
-        e.preventDefault();
 
     }
 
