@@ -23,7 +23,7 @@ export default class Main extends Component {
             inviteModel: 0,
             inviteDisplayName: '',
             inviteUserEmail: '',
-            access_token: null
+            access_token: "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYaEZzQVBCaWtNNl9qZUFXT0toM2ZvbTRmZVhrZjZJOUR0a2lDTHVZalowUVdkN09RcWhDZ3UzclZIUlRRdE1CT0huUU42WV8zUk5nOVBRNlY2OUoxYmlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3Mzg4NzY2LCJuYmYiOjE1NTczODg3NjYsImV4cCI6MTU1NzM5MjY2NiwiYWlvIjoiNDJaZ1lKZ2U5MjZEbi9hZDlYeFg3cy9hTzJPRkZ3QT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiRm04bGx1anRyVW0tdUFacUMxWXdBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.NIgAkxb14DUBA07YuNT9lR1XvQQlGQIKC2z0wOpj3KgOFSwVUbIzTjvTtx-AwXGOquxKJjZrAx5CHkb4IQaOLivKU_6qqV350KdeguamkLCSeZXNb58xMJEs71nRRYk5L-blLS2qlTd78enwN_mY5ryGg0gdGxIEAlNnPLkGCtHYf61hTuxEukHKnNog0DA4Nekq5JBdVzfWUTcYG_kPEB49kILbMl873X3OB_NQiHFaQKcWaQcbVhue6cGP2t1xpPnZsDJlv9KIiFqCWeUEwQMaLg_m0PAMTBuUspetk3AYbOMXB1LeVWUcD3mBBnjFCkZdOVdEXyGIIcs2zSrgAw"
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,13 +32,12 @@ export default class Main extends Component {
     }
 
     componentWillMount() {
-        this.fetchAccessToken()
+        //this.fetchAccessToken()
+        this.fetchDetails()
     }
 
 
     fetchAccessToken = () => {
-
-
         axios({
             method: "get",
             url: "https://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/getToken",
@@ -310,8 +309,6 @@ export default class Main extends Component {
                 render: (text, record) => (
                 <span>
                     <Button onClick={() => this.showModal(record, "update")}> Update </Button>
-                    <Divider type="vertical" />
-                    <a href="javascript:;">Delete</a>
                 </span>
                 ),
             }
@@ -332,6 +329,7 @@ export default class Main extends Component {
                                     size="large"
                                     onSearch={value => this.handleSubmit(value)}
                                 />
+                                <Button>Clear</Button>
                             </div>
                         </div>
                         <div className="col-md-4">

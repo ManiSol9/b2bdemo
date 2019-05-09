@@ -9,7 +9,6 @@ import "antd/dist/antd.css";
 const Search = Input.Search;
 
 const headers = {
-    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYdHYzdUl2bk9xVFIwaTRPZWtvN2pTa2F5MFNxbzJYcF9qVE16dEhZUTZiVk91VXFPN2ZMNnR0NTVrWUt3WHZVV2pfQ0FMVFFVZnpVejAwVmg4c0pob1NBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3MjEyNDA2LCJuYmYiOjE1NTcyMTI0MDYsImV4cCI6MTU1NzIxNjMwNiwiYWlvIjoiNDJaZ1lIajRSazcwN0N1VmVYZkNYRDBmUEhEaUJnQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiejdnRFVScE42VWl3Tm83NldCd1BBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.Q5FkGZAQN6RvBmSL-M9zKMuSUwpoMjNRVoqdg-mf7SHvON55YqGSljLQzYGxHO6tIP79udp0TsrztEULTfp9swn7A_Pwh5gbRPV4o3I_qLDjor6W26k5W694oHC9K1zx2OWiaN4GzCdj4udaQkLwt2prnOcW3dq70mOmRLByzcFtmTrqnG3Rv9LZy_9tsISELo4gR49IajkzwkiZb6Gtgs_zMj-0tMmHrGXQmT8I7UlKSnZ5NvgXpMTnqu8FLl24qcWceaGBRnMcpMZGRh017p5SSLahV43psMPaSSw2aP4b2jss5XN2b3xZstkuMd8GHwjhkgLOQ93AUf-0XLLd1g",
     "Content-Type": "application/json",
 }
 
@@ -60,7 +59,7 @@ export default class Guest extends Component {
 
             axios({
                 method: "POST",
-                url: "http://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/inviteguest",
+                url: "https://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/inviteguest",
                 headers: headers,
                 data: {
                     "firstname": this.state.firstname,
@@ -96,10 +95,7 @@ export default class Guest extends Component {
 
         }
 
-
-
         e.preventDefault();
-
 
     }
 
