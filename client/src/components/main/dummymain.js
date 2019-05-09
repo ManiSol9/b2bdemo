@@ -34,7 +34,7 @@ export default class Main extends Component {
             showdivid: null
         };
     }
-
+ 
     componentWillMount() {
         //this.fetchDetails()
     }
