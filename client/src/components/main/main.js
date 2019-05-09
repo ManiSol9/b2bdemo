@@ -41,7 +41,7 @@ export default class Main extends Component {
 
         axios({
             method: "get",
-            url: "http://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/getToken",
+            url: "https://dhlcp-b2b-externaluserappservice.azurewebsites.net/api/getToken",
             headers:{
                 'content-type': 'application/x-www-form-urlencoded',
                 "accept": 'application/json',
