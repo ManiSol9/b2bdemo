@@ -110,7 +110,7 @@ router.get("/api/gettoken", (req, res) => {
       data = JSON.parse(body)
 
       res.status(200).json({
-        ouptut: data
+        output: data
       })
 
     }

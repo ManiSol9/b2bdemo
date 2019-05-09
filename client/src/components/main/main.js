@@ -54,7 +54,7 @@ export default class Main extends Component {
                 console.log(response)
                 this.setState({
                     access_token: response.data.output.access_token
-                }, ()=> {
+                }, () => {
                     this.fetchDetails()
                 })
             })
