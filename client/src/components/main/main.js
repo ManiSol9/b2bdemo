@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Icon, Label, Menu, Button, } from 'semantic-ui-react'
-import { Modal, Input, Table, Divider, Tag } from 'antd';
+import { Icon, Label, Menu, Button, Table } from 'semantic-ui-react'
+import { Modal, Input, Divider, Tag } from 'antd';
 
 import './main.css';
 import "antd/dist/antd.css";
@@ -23,7 +23,7 @@ export default class Main extends Component {
             inviteModel: 0,
             inviteDisplayName: '',
             inviteUserEmail: '',
-            access_token: "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYcXdIM3ZpYWFUMDRBWjY1bFVRSGlLT19IRmpSRG83cEozTlpobTZ6eEx1bHR3SkxsdlUwbklUOTBPQUFmTkNIWTQ2dkhNejR3azNHMjV1aThQNWU0WXlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3NDkwMTYzLCJuYmYiOjE1NTc0OTAxNjMsImV4cCI6MTU1NzQ5NDA2MywiYWlvIjoiNDJaZ1lLaXR1SkRlY1dDMTFzS2JncmY1TXFiN0FnQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiSXpNNGxpTjBmRXF0MmZVWnAzY2ZBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.cZJslbAcMH4Khx4TmFdlFxW4SmR56fc93EiA7l2zScZzdx0iXMvlquCm0TApwuHZEAT2EDRy06xedrtYC_RoJNBg5LgTvaXm_6Tvlj4pzSdhbMrgveEy_CpRhmg4Qwz1oSg2abKfHYYX55AXnarQ7QM6p_Ba8vVBRPuhOtq3xYgk63Q2qCWWlqiaIY_29bsx0xsdhpOjNMMZlNMZlRLivTap5NkRbWUcAeaygVHyFGPM1kTLhsUfT5ihLT2wTIMhTFEHSRS8simRn67LRLaOzoHWv32pW-1sfcQcgilyjoVb_lRt-vMxUoK0DLbRGYMX2BHEzpfN9tLEk86XgOl2jQ",
+            access_token: "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYMEJHdjFhakVNVlVBWlh1V0Y3ckE4SS1WSTBkbkE4bHVKeHZRU3NHcWZSRWczUlk5LV9uc2NKNEY5RDh1MWdCb1RoNTY4OU5uVndMNC14SERzb3A3WUNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3NzI2MTQxLCJuYmYiOjE1NTc3MjYxNDEsImV4cCI6MTU1NzczMDA0MSwiYWlvIjoiNDJaZ1lHQXhhUHpQK0svUzdieXlJdmN1ZjczTkFBPT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiT3g3NVdiNUFGRUdfcUZEMmwwWXRBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.IAbifxwQFG17ekWvER5ZoCuf_AYbCXpmkpV3NCiWu6oOJK9zyXEF6TjYacbubSApO0ADXxf3Wi4RBvlhTlq0b12IIVyivS4WuGCJzWfx1owceExIX_gaAPVo7PuKR1q7w8wIa1JKxW7d9l_H7hL2ylSfsDTqcasref8SMAU3vD6u-3rv3Nlwd-AMTvuIYOF9OrfEVN8elqFiK7kStThh0CyL9lzR5a9y4RTOtJhngTOOH2kYkK5LyDuPbGE6Wky05FSpxVqyyfG5DMm-zdK2myqRmheZG-CVnpOjxNS-8jDxjkfrjbb0sabnrSjwwIgdFRENCaORq7v0ZqIq4RxB2Q",
             inviteOk: true,
             nexLink: null
         };
@@ -115,11 +115,11 @@ export default class Main extends Component {
             .then(response => {
                 console.log(response.data.odata.nextLink)
 
-                if(nextLinkText in response.data){
+                /*if(nextLinkText in response.data){
                     this.setState({
                         nexLink: response.data.nextLink
                     })
-                }
+                }*/
 
                 var data = response.data.value
 
@@ -137,10 +137,6 @@ export default class Main extends Component {
                 }
             });
     };
-
-    open = () => {
-        alert("hi")
-    }
 
     handleChange = (event) => {
 
@@ -411,7 +407,7 @@ export default class Main extends Component {
             <div className="body-container">
                 <div className="header-container">
                     <img style={{paddingLeft: "4%"}} alt="logo" src="https://iot.dhl.com/assets/images/dhl_logo.png" />
-                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B DEMO APP</h1></div>
+                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B APP</h1></div>
                 </div>
                 <div className="body1 col-md-12">
                     <div className="col-md-12">
@@ -438,11 +434,19 @@ export default class Main extends Component {
                     <div className="col-md-12 datatable">
 
 
-                        <Table dataSource={users}  columns={columns} class="col-md-12" style={{width: "100%"}} />
+                        {
+                        
+                            /*\\
+                            
+                            <Table dataSource={users}  columns={columns} class="col-md-12" style={{width: "100%"}} />
+                            
+                            */
+
+                        }
 
                         {
 
-                            /*
+                            
     
                             <Table celled>
                                 <Table.Header>
@@ -475,7 +479,6 @@ export default class Main extends Component {
                                 </Table.Footer>
                             </Table>
     
-                            */
 
                         }
 

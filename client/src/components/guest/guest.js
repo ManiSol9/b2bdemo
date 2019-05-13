@@ -102,7 +102,7 @@ export default class Guest extends Component {
             <div className="body-container">
                 <div className="header-container">
                 <img style={{paddingLeft: "4%"}} alt="logo" src="https://iot.dhl.com/assets/images/dhl_logo.png" />
-                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B DEMO APP</h1></div>
+                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B GUEST USER REGISTARTION APP</h1></div>
                 </div>
                 <div className="body1 col-md-12">
                     <div className="col-md-12 datatable">
