@@ -51,7 +51,7 @@ export default class Guest extends Component {
         console.log(this.state)
 
 
-        if(this.state.firstname == '' || this.state.lastname == '' || this.state.email == '' || this.state.phone == '' || this.state.nickname == ''){
+        if(this.state.firstname == '' || this.state.email == '' || this.state.phone == '' || this.state.nickname == ''){
 
             alert("Please fill all the fields")
 
@@ -101,7 +101,8 @@ export default class Guest extends Component {
         return (
             <div className="body-container">
                 <div className="header-container">
-                    <h1>DHL B2B GUEST USER INVITATION REQUEST</h1>
+                <img style={{paddingLeft: "4%"}} alt="logo" src="https://iot.dhl.com/assets/images/dhl_logo.png" />
+                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B DEMO APP</h1></div>
                 </div>
                 <div className="body1 col-md-12">
                     <div className="col-md-12 datatable">
@@ -119,22 +120,6 @@ export default class Guest extends Component {
                                     />
                                 </div>
                             </div>
-
-                            <div className="col-md-12 inputdiv">
-                                <div className="col-md-4 leftdiv">
-                                    <label>Last Name</label>
-                                </div>
-                                <div className="col-md-8 rightdiv">
-                                    <Input 
-                                        name="lastname"
-                                        value={this.state.lastname}
-                                        onChange={this.handleChange}
-                                        placeholder="Enter lastname"
-                                    />
-                                </div>
-                            </div>
-
-
                             <div className="col-md-12 inputdiv">
                                 <div className="col-md-4 leftdiv">
                                     <label>Nick Name</label>
@@ -148,7 +133,6 @@ export default class Guest extends Component {
                                      />
                                 </div>
                             </div>
-
                             <div className="col-md-12 inputdiv">
                                 <div className="col-md-4 leftdiv">
                                     <label>Email</label>
@@ -163,8 +147,6 @@ export default class Guest extends Component {
                                     />
                                 </div>
                             </div>
-
-
                             <div className="col-md-12 inputdiv">
                                 <div className="col-md-4 leftdiv">
                                     <label>Phone</label>
@@ -179,10 +161,9 @@ export default class Guest extends Component {
                                     />
                                 </div>
                             </div>
-
                             <div className="col-md-12 inputdiv">
                                 <Button type="primary" style={{ width: '40%' }} onClick={this.handleSubmit}>
-                                    Check
+                                    Register Now
                                 </Button>
                             </div>
                         </div>

@@ -47,8 +47,8 @@ router.post("/api/inviteguest", (req, res) => {
           {
             invitedUserDisplayName: req.body.firstname,
             invitedUserLastName: req.body.lastname,
-            invitedUserNickName: req.body.nickname,
-            invitedUserMobile: req.body.phone,
+            invitedUserMailNickName: req.body.nickname,
+            invitedUserMobilePhone: req.body.phone,
             invitedUserEmailAddress: req.body.email,
             sendInvitationMessage: true,
             inviteRedirectUrl: 'https://iot.dhl.com/',
@@ -106,13 +106,10 @@ router.get("/api/gettoken", (req, res) => {
       })
 
     } else {
-
       data = JSON.parse(body)
-
       res.status(200).json({
         output: data
       })
-
     }
 
   });

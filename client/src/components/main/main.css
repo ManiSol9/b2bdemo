@@ -3,10 +3,11 @@
 }
 .header-container {
     height: 80px;
-    background: yellow;
-    justify-content: center;
+    background: #fc0 !important;
+    justify-content: flex-start !important;
     display: flex;
     align-items: center;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.3);
 }
 input.ant-input {
     margin-bottom: 20px;
@@ -31,4 +32,29 @@ input.ant-input {
     padding: 10px;
     text-align: right;
     /* margin-top: 10px; */
+}
+
+button.ui.button.design {
+    height: 40px;
+    font-size: 14px;
+    /* background: blue; */
+    color: #fff !important;
+    background-color: #1890ff !important;
+    border-color: #1890ff;
+    margin-top: 10px;
+    padding: 4px !important;
+    width: 100px;
+    font-weight: normal;
+}
+
+.header-container h1 {
+    color: white;
+    padding-left: 20px;
+}
+
+body {
+    background-color: #fbfbfb !important;
+}
+tbody.ant-table-tbody {
+    background: white;
 }

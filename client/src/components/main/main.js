@@ -23,7 +23,9 @@ export default class Main extends Component {
             inviteModel: 0,
             inviteDisplayName: '',
             inviteUserEmail: '',
-            access_token: "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYaEZzQVBCaWtNNl9qZUFXT0toM2ZvbTRmZVhrZjZJOUR0a2lDTHVZalowUVdkN09RcWhDZ3UzclZIUlRRdE1CT0huUU42WV8zUk5nOVBRNlY2OUoxYmlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3Mzg4NzY2LCJuYmYiOjE1NTczODg3NjYsImV4cCI6MTU1NzM5MjY2NiwiYWlvIjoiNDJaZ1lKZ2U5MjZEbi9hZDlYeFg3cy9hTzJPRkZ3QT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiRm04bGx1anRyVW0tdUFacUMxWXdBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.NIgAkxb14DUBA07YuNT9lR1XvQQlGQIKC2z0wOpj3KgOFSwVUbIzTjvTtx-AwXGOquxKJjZrAx5CHkb4IQaOLivKU_6qqV350KdeguamkLCSeZXNb58xMJEs71nRRYk5L-blLS2qlTd78enwN_mY5ryGg0gdGxIEAlNnPLkGCtHYf61hTuxEukHKnNog0DA4Nekq5JBdVzfWUTcYG_kPEB49kILbMl873X3OB_NQiHFaQKcWaQcbVhue6cGP2t1xpPnZsDJlv9KIiFqCWeUEwQMaLg_m0PAMTBuUspetk3AYbOMXB1LeVWUcD3mBBnjFCkZdOVdEXyGIIcs2zSrgAw"
+            access_token: "eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFEQ29NcGpKWHJ4VHE5Vkc5dGUtN0ZYcXdIM3ZpYWFUMDRBWjY1bFVRSGlLT19IRmpSRG83cEozTlpobTZ6eEx1bHR3SkxsdlUwbklUOTBPQUFmTkNIWTQ2dkhNejR3azNHMjV1aThQNWU0WXlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIiwia2lkIjoiSEJ4bDltQWU2Z3hhdkNrY29PVTJUSHNETmEwIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9jZDk5ZmVmOC0xY2QzLTRhMmEtOWJkZi0xNTUzMTE4MWQ2NWUvIiwiaWF0IjoxNTU3NDkwMTYzLCJuYmYiOjE1NTc0OTAxNjMsImV4cCI6MTU1NzQ5NDA2MywiYWlvIjoiNDJaZ1lLaXR1SkRlY1dDMTFzS2JncmY1TXFiN0FnQT0iLCJhcHBfZGlzcGxheW5hbWUiOiJESExJT1RDb21tb25BcHAiLCJhcHBpZCI6ImRlMjE1ODhmLTBkYzAtNDEzMy04NTMwLTIyNDQzY2E1ZWFkZCIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2NkOTlmZWY4LTFjZDMtNGEyYS05YmRmLTE1NTMxMTgxZDY1ZS8iLCJvaWQiOiJkOWQwMzcxYy1lN2NlLTRhM2EtYjQ3YS1iN2VjNmNmNmY2OGEiLCJyb2xlcyI6WyJVc2VyLlJlYWRXcml0ZS5BbGwiLCJEaXJlY3RvcnkuUmVhZFdyaXRlLkFsbCIsIlVzZXIuSW52aXRlLkFsbCIsIlVzZXIuUmVhZC5BbGwiXSwic3ViIjoiZDlkMDM3MWMtZTdjZS00YTNhLWI0N2EtYjdlYzZjZjZmNjhhIiwidGlkIjoiY2Q5OWZlZjgtMWNkMy00YTJhLTliZGYtMTU1MzExODFkNjVlIiwidXRpIjoiSXpNNGxpTjBmRXF0MmZVWnAzY2ZBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNDA5OTA4MTc0fQ.cZJslbAcMH4Khx4TmFdlFxW4SmR56fc93EiA7l2zScZzdx0iXMvlquCm0TApwuHZEAT2EDRy06xedrtYC_RoJNBg5LgTvaXm_6Tvlj4pzSdhbMrgveEy_CpRhmg4Qwz1oSg2abKfHYYX55AXnarQ7QM6p_Ba8vVBRPuhOtq3xYgk63Q2qCWWlqiaIY_29bsx0xsdhpOjNMMZlNMZlRLivTap5NkRbWUcAeaygVHyFGPM1kTLhsUfT5ihLT2wTIMhTFEHSRS8simRn67LRLaOzoHWv32pW-1sfcQcgilyjoVb_lRt-vMxUoK0DLbRGYMX2BHEzpfN9tLEk86XgOl2jQ",
+            inviteOk: true,
+            nexLink: null
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -99,6 +101,9 @@ export default class Main extends Component {
 
     // funciton to fetch the motors assosiated with mindsphere
     fetchDetails = () => {
+
+        let nextLinkText  = "@odata.nextLink"
+
         axios({
             method: "get",
             url: "https://graph.microsoft.com/v1.0/users",
@@ -108,21 +113,25 @@ export default class Main extends Component {
             }
         })
             .then(response => {
-                console.log(response)
+                console.log(response.data.odata.nextLink)
+
+                if(nextLinkText in response.data){
+                    this.setState({
+                        nexLink: response.data.nextLink
+                    })
+                }
 
                 var data = response.data.value
 
                 this.setState({
-                    users: data
+                    users: data,
+                    search: ''
                 })
 
             })
             .catch(err => {
                 console.log(err);
                 if(err.response.status == 401){
-
-
-
                 } else {
                     alert("Something went Problem!, Please try again later")
                 }
@@ -161,6 +170,10 @@ export default class Main extends Component {
     }
 
     handleSubmit = (value) => {
+
+        this.setState({
+            search: value
+        })
 
         var queryParam = "?$filter=startswith(mail, '" + value + "')"
 
@@ -270,13 +283,100 @@ export default class Main extends Component {
     }
 
 
+    checkEmail = () => {
+
+        let email = this.state.inviteUserEmail
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+        {
+
+            var queryParam = "?$filter=startswith(mail, '" + email + "')"
+
+            axios({
+                method: "get",
+                url: "https://graph.microsoft.com/v1.0/users" + queryParam,
+                headers: {
+                    "Authorization": "Bearer "+ this.state.access_token,
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(response => {
+                    console.log(response)
+
+                    let userData = response.data.value
+
+                    if(userData.length == 1){
+
+                        alert("Already registered Please try again with another email")
+
+                        this.setState({
+                            inviteOk: true,
+                            inviteUserEmail: ''
+                        })
+
+
+                    } else {
+
+                        this.setState({
+                            inviteOk: false
+                        })
+
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+
+                    alert("Something Went wrong, Please try again later")
+
+                });
+            
+
+
+        } else {
+
+            alert("Not a Valid Email Address")
+
+            this.setState({
+                inviteOk: true
+            })
+
+        }
+
+    }
+
+    checkName = () => {
+
+        let name = this.state.inviteDisplayName
+
+        var format = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+        if (format.test(name) == true)
+        {
+            alert("Not a valid name")
+
+            this.setState({
+                inviteDisplayName: null
+            })
+
+        } else {
+
+            console.log("Ok!")
+
+        }
+
+    }
+
+
+
+
     render() {
 
         let users = this.state.users
 
         const columns = [
             {
-                title: 'Dispay Name',
+                title: 'Display Name',
                 dataIndex: 'displayName',
                 key: 'name',
                 render: text => <a href="javascript:;">{text}</a>,
@@ -310,20 +410,24 @@ export default class Main extends Component {
         return (
             <div className="body-container">
                 <div className="header-container">
-                    <h1>DHL B2B DEMO</h1>
+                    <img style={{paddingLeft: "4%"}} alt="logo" src="https://iot.dhl.com/assets/images/dhl_logo.png" />
+                    <div style={{textAlign: "center", width: "73%"}}><h1>B2B DEMO APP</h1></div>
                 </div>
                 <div className="body1 col-md-12">
                     <div className="col-md-12">
                         <div className="col-md-8">
-                            <div className="serachuser">
+                            <div className="serachuser col-md-8">
                                 <Search
-                                    placeholder="Search users by name"
+                                    placeholder="Search users by mail or name"
                                     enterButton="Search"
                                     size="large"
+                                    value={this.state.search}
+                                    onChange={this.handleChange}
+                                    name="search"
                                     onSearch={value => this.handleSubmit(value)}
                                 />
-                                <Button>Clear</Button>
                             </div>
+                            <button onClick={this.fetchDetails} onAnimationEnd class="ui button design">Clear Search</button>
                         </div>
                         <div className="col-md-4">
                             <div className="invitebutton">
@@ -334,7 +438,7 @@ export default class Main extends Component {
                     <div className="col-md-12 datatable">
 
 
-                        <Table dataSource={users} columns={columns} class="col-md-12" style={{width: "100%"}} />
+                        <Table dataSource={users}  columns={columns} class="col-md-12" style={{width: "100%"}} />
 
                         {
 
@@ -402,15 +506,17 @@ export default class Main extends Component {
                     :
 
                     <Modal
-                        title="Invite user to DHL"
+                        title="Invite External User"
                         visible={this.state.visible}
                         onOk={value => this.handleInvite(value)}
                         onCancel={this.handleCancel}
+                        okButtonProps={{ disabled: this.state.inviteOk }}
+                        okText="INVITE"
                     >
                     <form>
-                        <Input type="text" value={this.state.inviteDisplayName} name="invitename" onChange={this.handleChange} placeholder="Name" />
+                        <Input type="text" value={this.state.inviteDisplayName} required name="invitename" onBlur={this.checkName} onChange={this.handleChange} placeholder="Name" />
                         <br />
-                        <Input type="email" value={this.state.inviteUserEmail} name="invitemail" onChange={this.handleChange} placeholder="Mail" />
+                        <Input type="email" value={this.state.inviteUserEmail} required onBlur={this.checkEmail} name="invitemail" onChange={this.handleChange} placeholder="Mail" />
                     </form>
                     </Modal>
                 }
