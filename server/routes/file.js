@@ -2,117 +2,53 @@ const path = require("path");
 const router = require("express").Router();
 const fs = require('fs');
 var request = require('request');
+var azure = require('azure-storage');
+var tableService = azure.createTableService('462sensordata', 'EHFyzv0GPoQjOsSQYx68X6nyw96TM4F6yU7k6ijy6aPhJfn2zIHGmAhdPIGeKHdFPlvCesswCb1MQKbYr6YtaQ==');
 
-router.post("/api/inviteguest", (req, res) => {
 
-  let access_token = null
+router.get("/getData", (req, res) => {
 
-  var options = {
-    method: 'POST',
-    url: 'https://login.microsoftonline.com/cd99fef8-1cd3-4a2a-9bdf-15531181d65e/oauth2/token',
-    headers:
-      {
-        'content-type': 'application/x-www-form-urlencoded',
-        accept: 'application/json'
-      },
-    form:
-      {
-        grant_type: 'client_credentials',
-        client_id: 'de21588f-0dc0-4133-8530-22443ca5eadd',
-        client_secret: 'x/S9opfi9zLKMKsey0ZHEAUqdm9H9REVAUTJOYwZMwA=',
-        resource: 'https://graph.microsoft.com'
-      }
-  };
+    var d = new Date();
+    console.log(d);
+    var n = d.valueOf();
 
-  request(options, function (error, response, body) { // this call will fetch the access token
-    if (error) {
+    let lasttime = n - 5000
 
-      res.status(401).json({
-        message: error
-      })
+    var query = new azure.TableQuery()
+    .top(1)
+    .where('Timestamp ge ?', new Date(lasttime));
 
-    } else {
+    tableService.queryEntities('livedata', query, null, function(error, result, response) {
+      if (!error) {
+        console.log(result.entries, n)
 
-      data = JSON.parse(body)
+        let entries = result.entries; 
 
-      var options1 = {
-        method: 'POST',
-        url: 'https://graph.microsoft.com/v1.0/invitations',
-        headers:
-          {
-            'content-type': 'application/json',
-            authorization: 'Bearer ' + data.access_token
-          },
-        body:
-          {
-            invitedUserDisplayName: req.body.firstname,
-            invitedUserLastName: req.body.lastname,
-            invitedUserMailNickName: req.body.nickname,
-            invitedUserMobilePhone: req.body.phone,
-            invitedUserEmailAddress: req.body.email,
-            sendInvitationMessage: true,
-            inviteRedirectUrl: 'https://iot.dhl.com/',
-            inviteRedeemUrl: 'https://iot.dhl.com/'
-          },
-        json: true
-      };
-  
-      request(options1, function (error, response, body) { // this call will send invitation 
-        if (error) {
-          res.status(401).json({
-            message: error
+        if(entries.length == 0){
+          res.status(200).send({
+            "status": 200,
+            "temparature": 0,
+            "humidity": 0
           })
         } else {
-          res.status(200).json({
-            message: "invitation sent suucessfully"
+          res.status(200).send({
+            "status": 200,
+            "temparature": entries[0].temperature._,
+            "humidity": entries[0].humidity._
           })
         }
-      });
+    
 
-    }
+      } else {
+        console.log(error)
 
-  });
-
-});
-
-
-
-router.get("/api/gettoken", (req, res) => {
-
-  let access_token = null
-
-  var options = {
-    method: 'POST',
-    url: 'https://login.microsoftonline.com/cd99fef8-1cd3-4a2a-9bdf-15531181d65e/oauth2/token',
-    headers:
-      {
-        'content-type': 'application/x-www-form-urlencoded',
-        accept: 'application/json'
-      },
-    form:
-      {
-        grant_type: 'client_credentials',
-        client_id: 'de21588f-0dc0-4133-8530-22443ca5eadd',
-        client_secret: 'x/S9opfi9zLKMKsey0ZHEAUqdm9H9REVAUTJOYwZMwA=',
-        resource: 'https://graph.microsoft.com'
+        res.status(500).send({
+          "status": 500,
+          "error": error.toString()
+        })
+    
       }
-  };
-
-  request(options, function (error, response, body) { // this call will fetch the access token
-    if (error) {
-
-      res.status(401).json({
-        message: error
-      })
-
-    } else {
-      data = JSON.parse(body)
-      res.status(200).json({
-        output: data
-      })
-    }
-
-  });
+    });
 
 });
 

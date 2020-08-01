@@ -9,8 +9,7 @@ const fileServices = require('./server/routes/file');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/', fileServices);
-app.use('/admin', express.static(path.join(__dirname, './client/build')));
+app.use('/api/v1', fileServices);
 
 
 
